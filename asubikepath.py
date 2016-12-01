@@ -1,8 +1,8 @@
 #!/usr/bin/python
-
+#
 # Customized A* search algorithm for bike routing in ASU Campus
 # Author: Ajinkya Patil
-
+#
 
 def pathfinding(map, start, goal):
     reach = PriorityQueue()
@@ -22,7 +22,7 @@ def pathfinding(map, start, goal):
                 priority = new_cost + heuristic(goal, next)
                 reach.put(next, priority)
                 antecedents[next] = current
-    return antecedents, path_costs
+    return antecedents
 
 def cost(next, time_at_current):
     time_from_current = 0.125 if next in map.roads else 0.167
@@ -58,4 +58,3 @@ def neighbors(current, path_time):
         return set([p for p in nearby if p not in map.obstacles and p not in map.walkonlys])
     return set([p for p in nearby if p not in map.obstacles])
 
-                        
